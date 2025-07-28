@@ -84,6 +84,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        findViewById<Button>(R.id.btnDelete).setOnClickListener{
+            hideKeyboard()
+            val idText = inputEditText.text.toString()
+            if (idText.isNotEmpty()){
+                try{
+                    val id = idText.toInt()
+                    deleteLoanById(id)
+                }catch(e:NumberFormatException){
+                    Toast.makeText(this,"Please enter a valid numeric Loan ID.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else{
+                Toast.makeText(this,"Please enter a Loan ID", Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
     }
 
